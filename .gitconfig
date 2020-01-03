@@ -1,0 +1,8 @@
+[user]
+	email = smoderlak@dr-walter.com
+	signingkey = ""
+	name = sebastian moderlak
+[core]
+	safecrlf = warn
+[alias]
+	ultimate-log = log --graph --oneline --decorate

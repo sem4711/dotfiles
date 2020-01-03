@@ -1,0 +1,41 @@
+# turn down the splash-screen on system start
+startup_message off
+
+# set buffer up to 2000 lines
+defscrollback 2000
+
+# fixed status line
+hardstatus alwayslastline
+
+# green schema (development)
+caption always "%{kg}%-w%{kG}%n %t%{-}%+w %="
+hardstatus string "F1 Split | F2 Unsplit | F3 Tab Prev | F4 Tab Next     F5 New | F6 Title | F7 Prev | F8 Next     F9 Monitor | F10 Copy | F11 Paste | F12 Kill%=[%{kG} %H %{kW}][ %Y-%m-%d %c:%s ][ %l ]"
+
+# yellow schema (staging)
+# caption always "%{ky}%-w%{kY}%n %t%{-}%+w %="
+# hardstatus string "F1 Split | F2 Unsplit | F3 Tab Prev | F4 Tab Next     F5 New | F6 Title | F7 Prev | F8 Next     F9 Monitor | F10 Copy | F11 Paste | F12 Kill%=[%{kY} %H %{kW}][ %Y-%m-%d %c:%s ][ %l ]"
+
+# red schema (production)
+# caption always "%{kr}%-w%{kR}%n %t%{-}%+w %="
+# hardstatus string "F1 Split | F2 Unsplit | F3 Tab Prev | F4 Tab Next     F5 New | F6 Title | F7 Prev | F8 Next     F9 Monitor | F10 Copy | F11 Paste | F12 Kill%=[%{kR} %H %{kW}][ %Y-%m-%d %c:%s ][ %l ]"
+
+# bind function keys, useful when using putty under windows - see also https://blog.moderlak.de/linux-screen/
+bindkey -k k1 split
+bindkey -k k2 remove
+bindkey -k k3 focus up
+bindkey -k k4 focus
+bindkey -k k5 screen
+bindkey -k k6 title
+bindkey -k k7 prev
+bindkey -k k8 next
+bindkey -k k9 monitor
+bindkey -k k; copy
+bindkey -k F1 paste
+bindkey -k F2 kill
+
+# define overwriting window-size
+termcap xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+terminfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# bind auth sock to enable intelligent agent forwarding - will be linked in ~/.ssh/rc automatically when connecting any screen window
+setenv SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
